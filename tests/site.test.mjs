@@ -27,7 +27,9 @@ test('pages implement the stable QR and download contract', () => {
   assert.match(download, /href="documents\/vision-2030-projects\.pdf"/);
   assert.match(download, /manual-projects-download/);
   assert.match(download, /الرؤية الاستراتيجية 2030 - عربي/);
-  assert.match(download, /الرؤية الاستراتيجية 2030- انجليزي/);
+  assert.match(download, /Vision 2030 - English/);
+  assert.match(download, /English version of the strategic vision document/);
+  assert.match(download, />Download PDF</);
   assert.match(download, /بلدية طرابلس المركز/);
   assert.doesNotMatch(download, /مكتبة الوثائق/);
   assert.match(download, /اختر الوثيقة التي تود تحميلها/);
