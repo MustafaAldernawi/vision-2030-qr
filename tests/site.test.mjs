@@ -6,6 +6,7 @@ const requiredFiles = [
   'index.html',
   'download.html',
   'documents/vision-2030.pdf',
+  'documents/vision-2030-projects.pdf',
   'assets/images/cover.png',
   'assets/js/qrcode.min.js'
 ];
@@ -23,6 +24,8 @@ test('pages implement the stable QR and download contract', () => {
   assert.match(index, /copy-download-link/);
   assert.match(index, /save-qr/);
   assert.match(download, /new URL\(['"]documents\/vision-2030\.pdf['"], window\.location\.href\)/);
+  assert.match(download, /new URL\(['"]documents\/vision-2030-projects\.pdf['"], window\.location\.href\)/);
+  assert.match(download, /manual-projects-download/);
   assert.match(download, /download/);
   assert.match(download, /auto/);
 });
