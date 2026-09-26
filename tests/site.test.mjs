@@ -23,11 +23,15 @@ test('pages implement the stable QR and download contract', () => {
   assert.match(script, /new URL\(['"]download\.html['"], window\.location\.href\)/);
   assert.match(index, /copy-download-link/);
   assert.match(index, /save-qr/);
-  assert.match(download, /new URL\(['"]documents\/vision-2030\.pdf['"], window\.location\.href\)/);
-  assert.match(download, /new URL\(['"]documents\/vision-2030-projects\.pdf['"], window\.location\.href\)/);
+  assert.match(download, /href="documents\/vision-2030\.pdf"/);
+  assert.match(download, /href="documents\/vision-2030-projects\.pdf"/);
   assert.match(download, /manual-projects-download/);
+  assert.match(download, /الرؤية الاستراتيجية 2030 - عربي/);
+  assert.match(download, /الرؤية الاستراتيجية 2030- انجليزي/);
+  assert.doesNotMatch(download, /fetch\(/);
+  assert.doesNotMatch(download, /setTimeout\(/);
+  assert.match(readFileSync('assets/css/download-options.css', 'utf8'), /@font-face/);
   assert.match(download, /download/);
-  assert.match(download, /auto/);
 });
 
 test('repository has a GitHub Pages deployment workflow and update guidance', () => {

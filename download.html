@@ -10,42 +10,25 @@
 </head>
 <body class="download-page">
   <main class="download-shell">
+    <div class="download-mark" aria-hidden="true">2030</div>
     <p class="eyebrow">بلدية طرابلس المركز</p>
-    <h1>الرؤية الاستراتيجية 2030</h1>
-    <p id="download-message" role="status" aria-live="polite">يجري تجهيز التحميل…</p>
+    <h1>مكتبة الوثائق</h1>
+    <p id="download-message" class="download-intro">اختر الوثيقة التي تود تحميلها.</p>
     <section class="document-list" aria-label="ملفات التحميل">
       <div class="document-option">
-        <h2>الرؤية الاستراتيجية 2030</h2>
-        <a id="manual-download" class="button primary" href="documents/vision-2030.pdf" download="vision-2030.pdf">تحميل الوثيقة الرئيسية</a>
-        <p class="help">يبدأ تنزيل هذه الوثيقة تلقائياً عند الإمكان.</p>
+        <span class="document-number">01</span>
+        <h2>الرؤية الاستراتيجية 2030 - عربي</h2>
+        <p class="help">نسخة الوثيقة باللغة العربية.</p>
+        <a id="manual-download" class="button primary" href="documents/vision-2030.pdf" download="vision-2030.pdf">تحميل PDF</a>
       </div>
       <div class="document-option">
-        <h2>مشاريع مقترحة — بلدية طرابلس المركز</h2>
-        <a id="manual-projects-download" class="button secondary" href="documents/vision-2030-projects.pdf" download="vision-2030-projects.pdf">تحميل ملف المشاريع المقترحة</a>
+        <span class="document-number">02</span>
+        <h2>الرؤية الاستراتيجية 2030- انجليزي</h2>
+        <p class="help">نسخة الوثيقة باللغة الإنجليزية.</p>
+        <a id="manual-projects-download" class="button secondary" href="documents/vision-2030-projects.pdf" download="vision-2030-projects.pdf">تحميل PDF</a>
       </div>
     </section>
     <a class="back-link" href="index.html">العودة إلى صفحة الوثيقة</a>
   </main>
-  <script>
-    (() => {
-      const pdfUrl = new URL('documents/vision-2030.pdf', window.location.href);
-      const projectsUrl = new URL('documents/vision-2030-projects.pdf', window.location.href);
-      const link = document.getElementById('manual-download');
-      const projectsLink = document.getElementById('manual-projects-download');
-      const message = document.getElementById('download-message');
-      link.href = pdfUrl.href;
-      projectsLink.href = projectsUrl.href;
-      fetch(pdfUrl, { method: 'HEAD' })
-        .then(response => {
-          if (!response.ok) throw new Error('pdf-unavailable');
-          message.textContent = 'سيبدأ التنزيل تلقائياً. إن لم يبدأ، استخدم زر التحميل.';
-          window.setTimeout(() => link.click(), 650); // auto download; manual control remains for blocked browsers.
-        })
-        .catch(() => {
-          message.textContent = 'تعذر تجهيز الملف حالياً. يرجى المحاولة لاحقاً.';
-          link.setAttribute('aria-disabled', 'true');
-        });
-    })();
-  </script>
 </body>
 </html>
