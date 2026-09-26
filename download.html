@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="صفحة تحميل الرؤية الاستراتيجية 2030 لبلدية طرابلس المركز">
+  <title>تحميل الرؤية الاستراتيجية 2030 | بلدية طرابلس المركز</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="download-page">
+  <main class="download-shell">
+    <p class="eyebrow">بلدية طرابلس المركز</p>
+    <h1>الرؤية الاستراتيجية 2030</h1>
+    <p id="download-message" role="status" aria-live="polite">يجري تجهيز التحميل…</p>
+    <a id="manual-download" class="button primary" href="documents/vision-2030.pdf" download="vision-2030.pdf">تحميل الوثيقة الآن</a>
+    <p class="help">إذا لم يبدأ التحميل تلقائياً، استخدم الزر أعلاه.</p>
+    <a class="back-link" href="index.html">العودة إلى صفحة الوثيقة</a>
+  </main>
+  <script>
+    (() => {
+      const pdfUrl = new URL('documents/vision-2030.pdf', window.location.href);
+      const link = document.getElementById('manual-download');
+      const message = document.getElementById('download-message');
+      link.href = pdfUrl.href;
+      fetch(pdfUrl, { method: 'HEAD' })
+        .then(response => {
+          if (!response.ok) throw new Error('pdf-unavailable');
+          message.textContent = 'سيبدأ التنزيل تلقائياً. إن لم يبدأ، استخدم زر التحميل.';
+          window.setTimeout(() => link.click(), 650); // auto download; manual control remains for blocked browsers.
+        })
+        .catch(() => {
+          message.textContent = 'تعذر تجهيز الملف حالياً. يرجى المحاولة لاحقاً.';
+          link.setAttribute('aria-disabled', 'true');
+        });
+    })();
+  </script>
+</body>
+</html>

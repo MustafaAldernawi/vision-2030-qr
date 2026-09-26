@@ -1,0 +1,7 @@
+{
+  "name": "vision-2030-qr",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/site.test.mjs"
+  }
+}
